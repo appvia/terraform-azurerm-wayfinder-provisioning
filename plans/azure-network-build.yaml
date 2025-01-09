@@ -1,0 +1,21 @@
+apiVersion: cloudresources.appvia.io/v2beta1
+kind: CloudResourcePlan
+metadata:
+  name: azure-network-build
+spec:
+  source: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//network/build
+  revision: azure-network-build
+  allocation:
+    type: all
+  cloud: azure
+  description: blank
+  template:
+    inputs:
+    - description: blank
+      name: resource_group_name
+      type: string
+      value: ""
+    - description: blank
+      name: location
+      type: string
+      value: ""
