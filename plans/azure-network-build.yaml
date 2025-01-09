@@ -16,8 +16,8 @@ spec:
     name: location
     type: string
   terraform:
-    moduleURL: https://github.com/terraform-aws-modules/terraform-aws-vpc
-    moduleVersion: test1
+    moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//network/build
+    moduleVersion: azure-network-build
     tfVarsTemplate: |
       resource_group_name = "{{ .Inputs.resource_group_name }}"
       location = "{{ .Inputs.location }}"
