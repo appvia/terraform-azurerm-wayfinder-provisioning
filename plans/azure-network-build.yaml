@@ -10,15 +10,32 @@ spec:
   description: blank
   inputs:
   - description: blank
-    name: resource_group_name
+    name: cloud_resource
+    type: string
+  - description: blank
+    name: cidr_node
+    type: string
+  - description: blank
+    name: resource_group
     type: string
   - description: blank
     name: location
     type: string
+  - description: blank
+    name: layout_mode
+    type: string
+  - description: blank
+    name: layout_private_subnets
+    type: number
   terraform:
     moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//network/build
-    moduleVersion: azure-network-build
+    moduleVersion: tag1
     tfVarsTemplate: |
-      resource_group_name = "{{ .Inputs.resource_group_name }}"
+      cloud_resource = "{{ .Inputs.cloud_resource }}"
+      cidr_node = "{{ .Inputs.cidr_node }}"
+      resource_group = "{{ .Inputs.resource_group }}"
       location = "{{ .Inputs.location }}"
+      layout_mode = "{{ .Inputs.layout_mode }}"
+      layout_private_subnets = "{{ .Inputs.layout_private_subnets }}"
   version: 0.0.1
+  permission: NetworkManager
