@@ -29,7 +29,7 @@ spec:
     type: number
   terraform:
     moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//network/build
-    moduleVersion: tag1
+    moduleVersion: tag2
     tfVarsTemplate: |
       cloud_resource = "{{ .Inputs.cloud_resource }}"
       cidr_node = "{{ .Inputs.cidr_node }}"
