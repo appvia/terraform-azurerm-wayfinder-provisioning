@@ -5,7 +5,7 @@ data "azurerm_virtual_network" "wayfinder" {
 
 resource "azurerm_subnet" "wayfinder" {
   name                 = "${var.cloud_resource}-nodes"
-  resource_group_name  = data.azurerm_virtual_network.wayfinder.resource_group
+  resource_group_name  = var.resource_group
   virtual_network_name = data.azurerm_virtual_network.wayfinder.name
   address_prefixes     = [var.cidr_node]
 }

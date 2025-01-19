@@ -5,5 +5,5 @@ output "subnet_ids" {
 
 output "virtual_network_id" {
   description = "blank"
-  value       = azurerm_virtual_network.wayfinder.id
+  value       = data.azurerm_virtual_network.wayfinder.id
 }
