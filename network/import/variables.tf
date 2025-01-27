@@ -1,4 +1,4 @@
-variable "existing_network" {
+variable "virtual_network" {
   description = "blank"
   type = string
 }
