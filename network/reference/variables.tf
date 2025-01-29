@@ -10,5 +10,5 @@ variable "virtual_network" {
 
 variable "subnet_name" {
   description = "blank"
-  type = "string"
+  type = string
 }
