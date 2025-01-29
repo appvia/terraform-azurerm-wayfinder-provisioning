@@ -18,11 +18,6 @@ output "kubernetes_version" {
   value = "static"
 }
 
-output "ca_certificate" {
-  description = "blank"
-  value = nonsensitive(length(data.azurerm_kubernetes_cluster.wayfinder.kube_config) > 0 ? data.azurerm_kubernetes_cluster.wayfinder.kube_config[0].cluster_ca_certificate : data.azurerm_kubernetes_cluster.wayfinder.kube_admin_config[0].cluster_ca_certificate)
-}
-
 output "principal_id" {
   description = "blank"
   value = "static"
@@ -31,4 +26,9 @@ output "principal_id" {
 output "raw_config" {
   description = "blank"
   value = nonsensitive(data.azurerm_kubernetes_cluster.wayfinder.kube_config_raw)
+}
+
+output "raw_admin_config" {
+  description = "blank"
+  value = nonsensitive(data.azurerm_kubernetes_cluster.wayfinder.kube_admin_config_raw)
 }
