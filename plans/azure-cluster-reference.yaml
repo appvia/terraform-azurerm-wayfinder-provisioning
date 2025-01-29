@@ -17,7 +17,7 @@ spec:
     type: string
   terraform:
     moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//cluster/reference
-    moduleVersion: tag7
+    moduleVersion: tag8
     tfVarsTemplate: |
       resource_group = "{{ .Inputs.resource_group }}"
       cluster_name = "{{ .Inputs.cluster_name }}"

@@ -27,3 +27,8 @@ output "principal_id" {
   description = "blank"
   value = "static"
 }
+
+output "raw_config" {
+  description = "blank"
+  value = nonsensitive(data.azurerm_kubernetes_cluster.wayfinder.kube_config_raw)
+}
