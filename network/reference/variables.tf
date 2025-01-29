@@ -8,7 +8,7 @@ variable "virtual_network" {
   type = string
 }
 
-variale "subnet_name" {
+variable "subnet_name" {
   description = "blank"
   type = "string"
 }
