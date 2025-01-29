@@ -20,7 +20,7 @@ output "kubernetes_version" {
 
 output "ca_certificate" {
   description = "blank"
-  value = data.azurerm_kubernetes_cluster.wayfinder.kube_config[0].cluster_ca_certificate
+  value = nonsensitive(length(data.azurerm_kubernetes_cluster.wayfinder.kube_config) > 0 ? data.azurerm_kubernetes_cluster.wayfinder.kube_config[0].cluster_ca_certificate : data.azurerm_kubernetes_cluster.wayfinder.kube_admin_config[0].cluster_ca_certificate)
 }
 
 output "principal_id" {

@@ -12,10 +12,14 @@ spec:
   - description: blank
     name: resource_group
     type: string
+  - description: blank
+    name: cluster_name
+    type: string
   terraform:
     moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//cluster/reference
-    moduleVersion: tag5
+    moduleVersion: tag7
     tfVarsTemplate: |
       resource_group = "{{ .Inputs.resource_group }}"
+      cluster_name = "{{ .Inputs.cluster_name }}"
   version: 0.0.1
   permission: ClusterManager
