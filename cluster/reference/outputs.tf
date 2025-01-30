@@ -8,27 +8,28 @@ output "resource_group" {
   value = var.resource_group
 }
 
+output "cluster_name" {
+  description = "blank"
+  value = var.cluster_name
+}
+
+output "ca_certificate" {
+  description = "blank"
+  value = nonsensitive(length(data.azurerm_kubernetes_cluster.wayfinder.kube_config) > 0 ? data.azurerm_kubernetes_cluster.wayfinder.kube_config.0.cluster_ca_certificate : "")
+}
+
 output "infra_resource_group" {
   description = "blank"
-  value = "static"
+  value = data.azurerm_kubernetes_cluster.wayfinder.node_resource_group
 }
 
 output "kubernetes_version" {
   description = "blank"
-  value = "static"
+  value = data.azurerm_kubernetes_cluster.wayfinder.kubernetes_version
 }
 
 output "principal_id" {
   description = "blank"
-  value = "static"
+  value = data.azurerm_kubernetes_cluster.wayfinder.identity.0.principal_id
 }
 
-output "raw_config" {
-  description = "blank"
-  value = nonsensitive(data.azurerm_kubernetes_cluster.wayfinder.kube_config_raw)
-}
-
-output "raw_admin_config" {
-  description = "blank"
-  value = nonsensitive(data.azurerm_kubernetes_cluster.wayfinder.kube_admin_config_raw)
-}
