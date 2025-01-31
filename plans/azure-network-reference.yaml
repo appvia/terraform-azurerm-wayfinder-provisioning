@@ -20,10 +20,9 @@ spec:
     type: string
   terraform:
     moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//network/reference
-    moduleVersion: tag7
+    moduleVersion: tag13
     tfVarsTemplate: |
       resource_group = "{{ .Inputs.resource_group }}"
       virtual_network = "{{ .Inputs.virtual_network }}"
-      subnet_name = "{{ .Inputs.subnet_name }}"
   version: 0.0.1
   permission: NetworkManager
