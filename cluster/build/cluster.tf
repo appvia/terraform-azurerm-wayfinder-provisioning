@@ -43,7 +43,7 @@ module "aks" {
   sku_tier                              = "Standard"
   storage_profile_disk_driver_enabled   = true
   storage_profile_disk_driver_version   = "v1"
-  vnet_subnet_id                        = var.subnet_ids[0]
+  vnet_subnet_id                        = var.subnet_id
   identity_ids                          = []
   identity_type                         = "SystemAssigned"
   workload_identity_enabled             = true
@@ -62,7 +62,7 @@ module "aks" {
   ]
 
   network_contributor_role_assigned_subnet_ids = {
-    vnet_subnet = var.subnet_ids[0]
+    vnet_subnet = var.subnet_id
   }
 }
 

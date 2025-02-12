@@ -25,9 +25,9 @@ variable "kubernetes_version" {
   type = string
 }
 
-variable "subnet_ids" {
+variable "subnet_id" {
   description = ""
-  type = list
+  type = string
 }
 
 variable "service_cidr" {
@@ -35,4 +35,3 @@ variable "service_cidr" {
   type = string
   default = "172.16.0.0/16"
 }
-
