@@ -26,12 +26,12 @@ variable "kubernetes_version" {
 }
 
 variable "subnet_id" {
-  description = ""
+  description = "The ID of the subnet in which the cluster nodes should be place"
   type = string
 }
 
 variable "service_cidr" {
-  description = ""
+  description = "The cidr used for services within the cluster"
   type = string
   default = "172.16.0.0/16"
 }
