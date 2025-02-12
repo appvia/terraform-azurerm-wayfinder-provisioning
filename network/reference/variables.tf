@@ -1,9 +1,9 @@
 variable "resource_group" {
-  description = "blank"
+  description = "The resource group of the virtual network we are importing"
   type        = string
 }
 
 variable "virtual_network" {
-  description = "blank"
+  description = "The name of the virtual network we are importing"
   type = string
 }

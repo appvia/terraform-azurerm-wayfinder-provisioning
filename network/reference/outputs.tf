@@ -1,9 +1,9 @@
 output "subnet_ids" {
-  description = "blank"
+  description = "A list of the subnets imported"
   value       = []
 }
 
 output "virtual_network_id" {
-  description = "blank"
+  description = "The ID of the virtual network that was imported"
   value       = data.azurerm_virtual_network.wayfinder.id
 }

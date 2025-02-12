@@ -21,12 +21,6 @@ spec:
   - description: blank
     name: location
     type: string
-  - description: blank
-    name: layout_mode
-    type: string
-  - description: blank
-    name: layout_private_subnets
-    type: number
   terraform:
     moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//network/build
     moduleVersion: tag3
@@ -35,7 +29,5 @@ spec:
       cidr_node = "{{ .Inputs.cidr_node }}"
       resource_group = "{{ .Inputs.resource_group }}"
       location = "{{ .Inputs.location }}"
-      layout_mode = "{{ .Inputs.layout_mode }}"
-      layout_private_subnets = "{{ .Inputs.layout_private_subnets }}"
   version: 0.0.1
   permission: NetworkManager
