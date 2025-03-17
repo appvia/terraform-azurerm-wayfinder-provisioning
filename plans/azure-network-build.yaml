@@ -23,10 +23,11 @@ spec:
     type: string
   terraform:
     moduleURL: https://github.com/appvia/terraform-azurerm-wayfinder-provisioning//network/build
-    moduleVersion: tag3
+    moduleVersion: var.variable
     tfVarsTemplate: |
+      prevent_destroy = true
       cloud_resource = "{{ .Inputs.cloud_resource }}"
-      cidr_node = "{{ .Inputs.cidr_node }}"
+      cidr_node = var.cloud_resource
       resource_group = "{{ .Inputs.resource_group }}"
       location = "{{ .Inputs.location }}"
   version: 0.0.1

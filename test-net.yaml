@@ -1,0 +1,23 @@
+apiVersion: cloudresources.appvia.io/v2beta2
+kind: CloudResource
+metadata:
+  name: test-vpc
+  namespace: ws-alsa
+spec:
+  cloud: azure
+  cloudAccessConfigRef:
+    name: azure-nonprod
+  planRef:
+    name: azure-network-build
+    version: 0.0.1
+  region: "uksouth"
+  inputs:
+    values:
+    - name: location
+      value: "uksouth"
+    - name: cloud_resource
+      value: "demonet8"
+    - name: cidr_node
+      value: "10.0.0.0/16"
+    - name: resource_group
+      value: "rg_8"

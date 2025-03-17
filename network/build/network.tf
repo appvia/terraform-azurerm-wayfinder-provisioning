@@ -1,4 +1,6 @@
 resource "azurerm_resource_group" "wayfinder" {
+  prevent_destroy = var.prevent_destroy
+  
   name     = var.resource_group
   location = var.location
 }
