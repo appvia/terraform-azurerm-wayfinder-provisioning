@@ -17,3 +17,8 @@ variable "location" {
   description = "The location in which resources are created"
   type        = string
 }
+
+variable "prevent_destroy" {
+  description = "Replicate a failure"
+  type = bool
+}
