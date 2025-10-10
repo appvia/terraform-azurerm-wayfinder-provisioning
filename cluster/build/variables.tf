@@ -1,0 +1,37 @@
+variable "location" {
+  description = "The location to build the cluster"
+  type = string
+}
+
+variable "cloud_resource" {
+  description = "The name to use for any created cloud resources"
+  type = string
+}
+
+variable "resource_group" {
+  description = "The resource group to build this cluster in"
+  type        = string
+  default = ""
+}
+
+variable "infra_resource_group" {
+  description = "The resource group to use for cluster infrastructure"
+  type = string
+  default = ""
+}
+
+variable "kubernetes_version" {
+  description = "The version of kubernetes used to build this cluster"
+  type = string
+}
+
+variable "subnet_id" {
+  description = "The ID of the subnet in which the cluster nodes should be place"
+  type = string
+}
+
+variable "service_cidr" {
+  description = "The cidr used for services within the cluster"
+  type = string
+  default = "172.16.0.0/16"
+}
