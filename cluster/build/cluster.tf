@@ -7,6 +7,7 @@ module "aks" {
   location            = var.location
   resource_group_name = local.resource_group
 
+  
   agents_availability_zones             = ["1", "2", "3"]
   agents_count                          = null
   agents_max_count                      = 10
@@ -37,7 +38,8 @@ module "aks" {
   private_cluster_enabled               = false
   private_cluster_public_fqdn_enabled   = false
   rbac_aad                              = true
-  rbac_aad_admin_group_object_ids       = []
+  rbac_aad_tenant_id  = data.azurerm_client_config.current.tenant_id
+  rbac_aad_admin_group_object_ids       = var.admin_group_ids
   rbac_aad_managed                      = true
   role_based_access_control_enabled     = true
   sku_tier                              = "Standard"
