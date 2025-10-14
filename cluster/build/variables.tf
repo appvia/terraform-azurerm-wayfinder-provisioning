@@ -35,3 +35,9 @@ variable "service_cidr" {
   type = string
   default = "172.16.0.0/16"
 }
+
+variable "admin_group_ids" {
+  description = "A set of group to grant admin access to the cluster"
+  type = list(string)
+  default = []
+}

@@ -39,7 +39,7 @@ module "aks" {
   private_cluster_public_fqdn_enabled   = false
   rbac_aad                              = true
   rbac_aad_tenant_id  = data.azurerm_client_config.current.tenant_id
-  rbac_aad_admin_group_object_ids       = [data.azurerm_client_config.current.object_id]
+  rbac_aad_admin_group_object_ids       = var.admin_group_ids
   rbac_aad_managed                      = true
   role_based_access_control_enabled     = true
   sku_tier                              = "Standard"
