@@ -41,3 +41,9 @@ variable "admin_group_ids" {
   type = list(string)
   default = []
 }
+
+variable "enable_node_auto_provisioning" {
+  description = "Enable Azure AKS node auto-provisioning."
+  type        = bool
+  default     = false
+}
