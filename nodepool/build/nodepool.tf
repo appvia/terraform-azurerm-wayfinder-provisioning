@@ -3,11 +3,10 @@ resource "azurerm_kubernetes_cluster_node_pool" "nodepool" {
   kubernetes_cluster_id = data.azurerm_kubernetes_cluster.cluster.id
   vm_size               = var.vm_size
 
-  # Node count configuration
-  node_count          = var.enable_auto_scaling ? null : var.node_count
-  enable_auto_scaling = var.enable_auto_scaling
-  min_count           = var.enable_auto_scaling ? var.min_count : null
-  max_count           = var.enable_auto_scaling ? var.max_count : null
+  auto_scaling_enabled = var.enable_auto_scaling
+  node_count = var.enable_auto_scaling ? null : var.node_count
+  min_count  = var.enable_auto_scaling ? var.min_count : null
+  max_count  = var.enable_auto_scaling ? var.max_count : null
 
   # Availability and networking
   zones          = var.availability_zones
@@ -24,10 +23,6 @@ resource "azurerm_kubernetes_cluster_node_pool" "nodepool" {
   max_pods             = var.max_pods
   node_labels          = var.node_labels
   node_taints          = var.node_taints
-
-  # Security and encryption
-  enable_host_encryption = var.enable_host_encryption
-  enable_node_public_ip  = var.enable_node_public_ip
 
   # Spot instances configuration
   priority        = var.priority

@@ -9,18 +9,18 @@ module "aks" {
 
   
   agents_availability_zones             = ["1", "2", "3"]
-  agents_count                          = null
-  agents_max_count                      = 10
+  agents_count                          = var.enable_node_auto_provisioning ? 2 : null
+  agents_max_count                      = var.enable_node_auto_provisioning ? null : 10
   agents_max_pods                       = 50
-  agents_min_count                      = 2
+  agents_min_count                      = var.enable_node_auto_provisioning ? null : 2
   agents_pool_name                      = "compute"
   agents_size                           = "Standard_D2s_v3"
   agents_type                           = "VirtualMachineScaleSets"
   api_server_authorized_ip_ranges       = ["0.0.0.0/0"]
-  auto_scaler_profile_enabled           = true
+  auto_scaler_profile_enabled           = var.enable_node_auto_provisioning ? false : true
   auto_scaler_profile_max_unready_nodes = 1
   azure_policy_enabled                  = true
-  enable_auto_scaling                   = true
+  enable_auto_scaling                   = var.enable_node_auto_provisioning ? false : true
   enable_host_encryption                = false
   key_vault_secrets_provider_enabled    = false
   kubernetes_version                    = var.kubernetes_version
@@ -28,7 +28,7 @@ module "aks" {
   net_profile_service_cidr              = var.service_cidr
   network_plugin                        = "azure"
   network_plugin_mode                   = "overlay"
-  network_policy                        = "calico"
+  network_policy                        = var.enable_node_auto_provisioning ? null : "calico"
   oidc_issuer_enabled                   = true
   orchestrator_version                  = var.kubernetes_version
   os_disk_size_gb                       = 50
@@ -74,5 +74,24 @@ data "azurerm_kubernetes_cluster" "wayfinder" {
 
   depends_on = [
     module.aks
+  ]
+}
+
+resource "azapi_update_resource" "aks_node_autoprovision" {
+  count = var.enable_node_auto_provisioning ? 1 : 0
+
+  type        = "Microsoft.ContainerService/managedClusters@2025-08-01"
+  resource_id = data.azurerm_kubernetes_cluster.wayfinder.id
+
+  body = jsonencode({
+    properties = {
+      nodeProvisioningProfile = {
+        mode = "Auto"
+      }
+    }
+  })
+
+  depends_on = [
+    data.azurerm_kubernetes_cluster.wayfinder
   ]
 }

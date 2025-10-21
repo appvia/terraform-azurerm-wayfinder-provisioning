@@ -91,18 +91,6 @@ variable "vnet_subnet_id" {
   default     = null
 }
 
-variable "enable_host_encryption" {
-  description = "Should the nodes in this node pool have host encryption enabled"
-  type        = bool
-  default     = false
-}
-
-variable "enable_node_public_ip" {
-  description = "Should nodes in this node pool have a public IP address"
-  type        = bool
-  default     = false
-}
-
 variable "node_labels" {
   description = "A map of Kubernetes labels to apply to nodes in this node pool"
   type        = map(string)
